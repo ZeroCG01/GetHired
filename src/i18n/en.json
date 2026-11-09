@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "JobTrack",
+    "appName": "GetHired",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -139,7 +139,7 @@
     "clearDataDesc": "Erase all applications and reset status stages to default",
     "clearDataConfirmTitle": "Clear All Data?",
     "clearDataConfirmDesc": "This action cannot be undone. All your application records will be deleted.",
-    "about": "About JobTrack",
+    "about": "About GetHired",
     "version": "Version {{version}} • 100% Offline & Private"
   },
   "statuses": {

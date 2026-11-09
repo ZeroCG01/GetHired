@@ -1,56 +1,126 @@
-# Welcome to your Expo app 👋
+# 🚀 GetHired — Mobile Job Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> **Your job hunt, without the spreadsheet chaos.**  
+> Aplikasi mobile modern untuk mencatat, melacak, dan memantau progres lamaran kerja dari berbagai platform (LinkedIn, Jobstreet, Glints, dll) langsung dari genggaman HP. 100% Offline, privat, dan cepat.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Tentang GetHired
 
-   ```bash
-   npm install
-   ```
+Pencari kerja sering kali mencatat puluhan hingga ratusan lamaran di spreadsheet Excel atau Google Sheets. Masalahnya, membuka spreadsheet di layar ponsel sangat tidak nyaman—kolomnya kecil, sulit diedit saat bepergian, dan rawan lupa follow-up.
 
-2. Start the app
+**GetHired** hadir dengan gaya antarmuka modern produktivitas (terinspirasi dari estetika *jobmetry.app*):
+- **Deep Obsidian Navy & Cyan Glow** (*Dark Mode Signature*) dan **Clean Alabaster** (*Light Mode*).
+- **Translucent Pill Badges** untuk status lamaran yang elegan dan terbaca jelas.
+- **Offline-First & Tanpa Login**: Seluruh data tersimpan aman di database lokal SQLite HP kamu, bebas biaya server dan privasi terjaga penuh.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🎯 Fitur Utama
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- ⚡ **Pencatatan Cepat (< 30 detik)**: Form dibagi menjadi field wajib cepat (Perusahaan, Posisi, Sumber Lowongan, Status Awal, Tanggal) dan bagian detail opsional (Gaji, Tipe Kerja, Link, Kontak Recruiter).
+- 🔄 **Ubah Status Sekali Tap**: Cukup tap badge status di kartu lamaran untuk membuka *bottom sheet* update status, lengkap dengan catatan perubahan.
+- 🕒 **Timeline Riwayat Status**: Memantau perjalanan setiap lamaran secara vertikal dari awal melamar hingga hasil akhir (Interview, Test, Offering, Accepted, Rejected, dll).
+- 🎨 **Status Kustom (Custom Pipeline Stages)**: Bebas menambah tahapan proses rekrutmen sendiri (misal: *Medical Checkup / MCU*, *Background Check*, dll) dengan 8 palet warna pilihan.
+- ⚠️ **Deteksi Duplikasi Otomatis**: Mendapat peringatan langsung jika kamu mengetik posisi dan perusahaan yang sudah pernah dilamar sebelumnya.
+- 📊 **Dashboard Analitik**:
+  - Total Lamaran, Lamaran Aktif, dan Tahap Interview/Test.
+  - **Response Rate (%)**: Rasio lamaran yang tembus ke tahap lanjut.
+  - Grafik distribusi per status dan peringkat efektivitas sumber lowongan (*LinkedIn vs Jobstreet vs Glints*).
+- 🌐 **Dwi-Bahasa (ID & EN)**: Beralih instan antara **Bahasa Indonesia** 🇮🇩 dan **English** 🇬🇧 dari menu Pengaturan.
+- 🌓 **Dark Mode & Light Mode**: Tampilan gelap signature atau terang bersih yang otomatis atau manual.
+- 📥 **Export ke CSV (Excel)**: Download seluruh riwayat lamaran dalam format `.csv` dengan UTF-8 BOM dan bagikan langsung lewat WhatsApp atau Google Drive.
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠️ Tech Stack
 
-When you're ready, run:
+- **Framework**: [Expo](https://expo.dev/) (SDK 58) + [React Native](https://reactnative.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Navigasi**: [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing)
+- **Database Lokal**: `expo-sqlite` (SQLite Native Storage)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand) + `@react-native-async-storage/async-storage`
+- **Multi-Bahasa**: `i18next` + `react-i18next` + `expo-localization`
+- **Icons & UI**: `@expo/vector-icons` (Ionicons) + `@react-native-community/datetimepicker`
+- **Export & Share**: `expo-file-system` + `expo-sharing`
+- **Build APK**: [EAS Build](https://docs.expo.dev/eas/) (`eas.json`)
 
-```bash
-npm run reset-project
+---
+
+## 📁 Struktur Direktori
+
+```text
+├── docs/
+│   ├── PRD.md                  # Product Requirements Document
+│   ├── DESIGN.md               # Design System & Color Tokens Specification
+│   └── IMPLEMENTATION_PLAN.md  # 6-Phase Technical Implementation Plan
+├── app/
+│   ├── _layout.tsx             # Root Layout (Theme & DB Hydrator)
+│   ├── (tabs)/
+│   │   ├── _layout.tsx         # Bottom Tab Bar (Lamaran, Stats, Settings)
+│   │   ├── index.tsx           # Layar Utama: List Lamaran, Search, Filter & FAB
+│   │   ├── stats.tsx           # Dashboard Analitik & Response Rate
+│   │   └── settings.tsx        # Bahasa, Tema, Status Kustom, Export CSV
+│   ├── application/
+│   │   ├── new.tsx             # Form Tambah Lamaran
+│   │   └── [id]/
+│   │       ├── index.tsx       # Detail Lamaran + Visual Status Timeline
+│   │       └── edit.tsx        # Form Edit Lamaran
+│   └── statuses/
+│       └── index.tsx           # Kelola Status Kustom (Tambah/Hapus Tahapan)
+├── src/
+│   ├── components/             # ApplicationCard, StatusBadge, FilterBar, dll
+│   ├── constants/              # theme.ts (Dark/Light tokens) & defaults.ts
+│   ├── db/                     # client.ts, applications.ts, statuses.ts
+│   ├── hooks/                  # useAppTheme.ts
+│   ├── i18n/                   # id.json, en.json, index.ts
+│   ├── store/                  # useAppStore.ts (Zustand)
+│   ├── types/                  # TypeScript Data Models
+│   └── utils/                  # format.ts, export.ts, uuid.ts
+├── app.json                    # Konfigurasi Expo & Android Package
+└── eas.json                    # Konfigurasi Build APK Android
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+---
 
-### Other setup steps
+## 🚀 Memulai (Getting Started)
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### 1. Prasyarat
+- Node.js versi 18+ (disarankan Node.js v22 LTS)
+- Aplikasi **Expo Go** ter-install di HP Android / iOS kamu (bisa download gratis di Play Store / App Store)
 
-## Learn more
+### 2. Instalasi Dependencies
+```bash
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Menjalankan Server Lokal
+```bash
+npx expo start
+```
+- Buka aplikasi **Expo Go** di HP kamu, lalu scan QR Code yang muncul di terminal.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 4. Pengecekan TypeScript
+```bash
+npx tsc --noEmit
+```
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 📦 Build File APK Fisik (Android)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Untuk membuat file instalasi `.apk` mandiri yang siap di-install langsung di HP:
+
+1. Install EAS CLI jika belum ada:
+   ```bash
+   npm install -g eas-cli
+   ```
+2. Jalankan perintah build APK:
+   ```bash
+   eas build -p android --profile preview
+   ```
+3. Tunggu proses build cloud selesai, lalu unduh dan install file `.apk` di HP Android kamu.
+
+---
+
+## 📄 Lisensi
+Didistribusikan di bawah lisensi MIT. Silakan gunakan dan modifikasi untuk keperluan pelacakan karier pribadimu!

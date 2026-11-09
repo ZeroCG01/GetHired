@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "JobTrack",
+    "appName": "GetHired",
     "save": "Simpan",
     "cancel": "Batal",
     "delete": "Hapus",
@@ -139,7 +139,7 @@
     "clearDataDesc": "Kosongkan seluruh data lamaran dan reset status ke awal",
     "clearDataConfirmTitle": "Hapus Seluruh Data?",
     "clearDataConfirmDesc": "Tindakan ini tidak bisa dibatalkan. Seluruh data lamaran akan hilang.",
-    "about": "Tentang JobTrack",
+    "about": "Tentang GetHired",
     "version": "Versi {{version}} • 100% Offline & Privat"
   },
   "statuses": {

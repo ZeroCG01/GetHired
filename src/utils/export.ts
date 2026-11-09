@@ -72,7 +72,7 @@ export async function exportApplicationsToCsv(): Promise<{ success: boolean; err
 
     const csvContent = '\uFEFF' + [headers.join(','), ...rows].join('\r\n'); // \uFEFF is UTF-8 BOM for Excel
 
-    const fileName = `JobTrack_Applications_${new Date().toISOString().split('T')[0]}.csv`;
+    const fileName = `GetHired_Applications_${new Date().toISOString().split('T')[0]}.csv`;
     const filePath = `${FileSystem.documentDirectory}${fileName}`;
 
     await FileSystem.writeAsStringAsync(filePath, csvContent, {

@@ -1,19 +1,19 @@
 {
   "expo": {
-    "name": "JobTrack",
-    "slug": "job-tracker",
+    "name": "GetHired",
+    "slug": "gethired",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "jobtrack",
+    "scheme": "gethired",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
       "supportsTablet": true,
-      "bundleIdentifier": "com.alif.jobtrack"
+      "bundleIdentifier": "com.alif.gethired"
     },
     "android": {
-      "package": "com.alif.jobtrack",
+      "package": "com.alif.gethired",
       "adaptiveIcon": {
         "backgroundColor": "#070B12",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
